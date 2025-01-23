@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GASBYGAS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Logo -->
+        <div class="logo">GASBYGAS</div>
+
+        <!-- Sidebar links -->
+        <a href="#dashboard-home" class="active bg-primary d-flex align-items-center"
+            onclick="showSection('dashboard-home')"><i class="bi bi-house-door me-2"></i> Dashboard Overview</a>
+        <a href="#outlet-management" class="d-flex align-items-center" onclick="showSection('outlet-management')"><i
+                class="bi bi-shop me-2"></i> Outlet Management</a>
+        <a href="#requests-overview" class="d-flex align-items-center" onclick="showSection('requests-overview')"><i
+                class="bi bi-list-task me-2"></i> Requests Overview</a>
+        <a href="#delivery-scheduling" class="d-flex align-items-center" onclick="showSection('delivery-scheduling')"><i
+                class="bi bi-truck me-2"></i> Delivery Scheduling</a>
+        <a href="#payment-tracking" class="d-flex align-items-center" onclick="showSection('payment-tracking')"> <i
+                class="bi bi-credit-card me-2"></i> Payment Tracking</a>
+        <a href="#notifications-center" class="d-flex align-items-center"
+            onclick="showSection('notifications-center')"><i class="bi bi-bell me-2"></i> Notifications Center</a>
+        <a href="#reports-analytics" class="d-flex align-items-center" onclick="showSection('reports-analytics')"><i
+                class="bi bi-graph-up me-2"></i> Reports & Analytics</a>
+        <a href="#settings" class="d-flex align-items-center" onclick="showSection('settings')"><i
+                class="bi bi-gear me-2"></i> Settings</a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="dropdown">
+            <button class="btn border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="iconify" data-icon="mdi:user" data-width="24" data-height="24"></span> Head office
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-decoration-none" href="#"><span class="iconify"
+                            data-icon="mdi:account-circle" data-width="24" data-height="24"></span> Profile</a></li>
+                <li><a class="dropdown-item text-decoration-none" href="#" id="logoutBtn"><span class="iconify"
+                            data-icon="mdi:logout" data-width="24" data-height="24"></span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <a href="#" class="content-p" id="breadcrumb">Home</a>
+        <h3 class="mb-5 mt-3" id="section-title">Welcome to GasByGas!</h3>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-home" class="content-section">
+            <!-- Cards for Dashboard -->
+            <div class="row">
+                <!-- Total Outlets Card -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Outlets</h5>
+                            <p class="card-text">15</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pending Requests Card -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Pending Requests</h5>
+                            <p class="card-text">25</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scheduled Deliveries Card -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Scheduled Deliveries</h5>
+                            <p class="card-text">10</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!--Total Deliveries-->
+                <div class="col-md-4 mt-5">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Deliveries</h5>
+                            <p class="card-text">30</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pending Payments -->
+                <div class="col-md-4 mt-5">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Pending Payments</h5>
+                            <p class="card-text">40</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Total gas requests -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mt-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Scheduled Deliveries</h5>
+                            <p class="card-text">10</p>
+                            <button class="btn btn-light">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outlet Management Section -->
+        <div id="outlet-management" class="content-section" style="display:none;">
+            <!-- <h2>Outlet Management</h2> -->
+            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addOutletModal">Add New
+                Outlet</button>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Outlet Name</th>
+                        <th>District</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Outlet 1</td>
+                        <td>Colombo</td>
+                        <td>Active</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">View</button>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Deactivate</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Outlet 2</td>
+                        <td>Galle</td>
+                        <td>Inactive</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">View</button>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Deactivate</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- Other sections can be defined similarly -->
+        <!-- Content Section for Requests Overview -->
+        <div id="requests-overview" class="content-section">
+            <!-- <h2>Requests Overview</h2> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Request Date</th>
+                        <th>Delivery Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>2025-01-15</td>
+                        <td>2025-01-20</td>
+                        <td>Pending</td>
+                        <td>
+                            <button class="btn btn-success btn-sm">Confirm</button>
+                            <button class="btn btn-danger btn-sm">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>2025-01-16</td>
+                        <td>2025-01-22</td>
+                        <td>Confirmed</td>
+                        <td>
+                            <button class="btn btn-success btn-sm">Confirm</button>
+                            <button class="btn btn-danger btn-sm">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Delivery Scheduling -->
+        <div id="delivery-scheduling" class="content-section">
+            <!-- <h2>Delivery Scheduling</h2> -->
+            <button class="btn btn-primary mb-3">Schedule New Delivery</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Outlet Name</th>
+                        <th>Scheduled Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Outlet 1</td>
+                        <td>2025-01-20</td>
+                        <td>Scheduled</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">View</button>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Outlet 2</td>
+                        <td>2025-01-22</td>
+                        <td>Pending</td>
+                        <td>
+                            <button class="btn btn-info btn-sm">View</button>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Payment Tracking -->
+        <div id="payment-tracking" class="content-section">
+            <!-- <h2>Payment Tracking</h2> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Amount Paid</th>
+                        <th>Payment Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>LKR 2500</td>
+                        <td>2025-01-15</td>
+                        <td>Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>LKR 3000</td>
+                        <td>2025-01-16</td>
+                        <td>Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Notifications Center -->
+        <div id="notifications-center" class="content-section">
+            <!-- <h2>Notifications Center</h2> -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Notification Date</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>2025-01-18</td>
+                        <td>Your gas delivery is scheduled for tomorrow.</td>
+                        <td>Sent</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>2025-01-19</td>
+                        <td>Your request has been confirmed.</td>
+                        <td>Sent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reports & Analytics -->
+        <div id="reports-analytics" class="content-section">
+            <!-- <h2>Reports & Analytics</h2> -->
+            <button class="btn btn-primary mb-3">Generate Report</button>
+            <p>Generate reports based on the requests, payments, and deliveries.</p>
+            <!-- Add charts or graphs here using Chart.js or another library -->
+        </div>
+
+        <!-- Settings -->
+        <div id="settings" class="content-section">
+            <!-- <h2>Settings</h2> -->
+            <p>Manage system settings, user roles, and permissions.</p>
+            <!-- Add settings options here -->
+        </div>
+        </main>
+    </div>
+
+    </div>
+
+    <!-- Modal for adding outlet -->
+    <div class="modal fade" id="addOutletModal" tabindex="-1" role="dialog" aria-labelledby="addOutletModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addOutletModalLabel">Add New Outlet</h5>
+                    <button type="button" class="btn-close shadow" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="outletName" class="mb-2">Outlet Name</label>
+                            <input type="text" class="form-control " id="outletName" placeholder="Enter outlet name">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="district" class="mb-2">District</label>
+                            <input type="text" class="form-control" id="district" placeholder="Enter district">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="status" class="mb-2">Status</label>
+                            <select class="form-control" id="status">
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Outlet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+
+    <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+
+    <!-- JavaScript to manage section visibility and highlight active links -->
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const sectionToShow = document.getElementById(sectionId);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+            }
+
+            // Highlight the active link in the sidebar
+            const links = document.querySelectorAll('.sidebar a');
+            links.forEach(link => {
+                link.classList.remove('active', 'bg-primary');
+            });
+            const activeLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active', 'bg-primary');
+            }
+
+            // Update breadcrumb dynamically
+            const breadcrumb = document.getElementById('breadcrumb');
+            const sectionTitle = document.getElementById('section-title');
+
+            if (sectionId === 'dashboard-home') {
+                breadcrumb.textContent = 'Home';
+                sectionTitle.textContent = 'Welcome to GasByGas!';
+            } else if (sectionId === 'outlet-management') {
+                breadcrumb.textContent = 'Home > Outlet Management';
+                sectionTitle.textContent = 'Manage Outlets';
+            } else if (sectionId === 'requests-overview') {
+                breadcrumb.textContent = 'Home > Requests Overview';
+                sectionTitle.textContent = 'Requests Overview';
+            } else if (sectionId === 'delivery-scheduling') {
+                breadcrumb.textContent = 'Home > Delivery Scheduling';
+                sectionTitle.textContent = 'Delivery Scheduling';
+            } else if (sectionId === 'payment-tracking') {
+                breadcrumb.textContent = 'Home > Payment Tracking';
+                sectionTitle.textContent = 'Payment Tracking';
+            } else if (sectionId === 'notifications-center') {
+                breadcrumb.textContent = 'Home > Notifications Center';
+                sectionTitle.textContent = 'Notifications Center';
+            } else if (sectionId === 'reports-analytics') {
+                breadcrumb.textContent = 'Home > Reports & Analytics';
+                sectionTitle.textContent = 'Reports & Analytics';
+            } else if (sectionId === 'settings') {
+                breadcrumb.textContent = 'Home > Settings';
+                sectionTitle.textContent = 'Settings';
+            }
+        }
+
+        // Default to show the Dashboard Overview, hide others initially
+        document.addEventListener('DOMContentLoaded', function () {
+            showSection('dashboard-home'); // Show dashboard home section by default
+        });
+            
+        // Save Outlet Form Data
+        document.getElementById("saveOutletButton").addEventListener("click", function (event) {
+            event.preventDefault();
+  
+            var outletName = document.getElementById("outletName").value;
+            var district = document.getElementById("district").value;
+            var status = document.getElementById("status").value;
+
+            // Logic to save outlet data (can be sent to server via AJAX)
+            alert("New Outlet Added:\n" + "Name: " + outletName + "\nDistrict: " + district + "\nStatus: " + status);
+
+            // Close the modal after saving
+            var modal = bootstrap.Modal.getInstance(document.getElementById('addOutletModal'));
+            modal.hide();
+
+            // Clear the form
+            document.getElementById("addOutletForm").reset();
+        });
+
+
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAjtrqY62TjOkwy5uAGwsL4wu3DtKivHII",
+            authDomain: "asecoursewrk1.firebaseapp.com",
+            projectId: "asecoursewrk1",
+            storageBucket: "asecoursewrk1.firebasestorage.app",
+            messagingSenderId: "796094272104",
+            appId: "1:796094272104:web:8c31e916740dfa9bc2a1dd"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+// Save new outlet
+document.getElementById("saveOutletBtn").addEventListener("click", function() {
+    const outletName = document.getElementById("outletName").value;
+    const district = document.getElementById("district").value;
+    const status = document.getElementById("status").value;
+
+    if (outletName === "" || district === "" || status === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    const newOutletRef = db.ref("outlets").push();
+    newOutletRef.set({
+        id: newOutletRef.key,
+        outletName: outletName,
+        district: district,
+        status: status
+    });
+
+    alert("Outlet added successfully!");
+    document.querySelector("form").reset();
+    $('#addOutletModal').modal('hide');
+});
+
+// Load outlets
+function loadOutlets() {
+    db.ref("outlets").on("value", (snapshot) => {
+        let rows = "";
+        snapshot.forEach((childSnapshot) => {
+            let data = childSnapshot.val();
+            rows += `
+                <tr>
+                    <td>${data.outletName}</td>
+                    <td>${data.district}</td>
+                    <td>${data.status}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editOutlet('${data.id}', '${data.outletName}', '${data.district}', '${data.status}')">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteOutlet('${data.id}')">Delete</button>
+                    </td>
+                </tr>`;
+        });
+        document.getElementById("outletList").innerHTML = rows;
+    });
+}
+loadOutlets();
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
